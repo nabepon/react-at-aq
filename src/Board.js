@@ -6,7 +6,9 @@ import { changeSquare } from "./reducer";
 
 export class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={this.props.data.squares[i]} onClick={() => this.props.dispatch(changeSquare(i))} />;
+    return <Square value={this.props.data.squares[i]} onClick={() => {
+      this.props.dispatch(changeSquare(i));
+    }} />;
   }
   render() {
     const winner = calculateWinner(this.props.data.squares);

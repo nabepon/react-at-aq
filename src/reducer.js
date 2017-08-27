@@ -2,9 +2,13 @@ import calculateWinner from "./calculateWinner";
 
 export function changeSquare(i) {
   console.log("changeSquare", i);
-  return {
-    type: "CHANGE_SQUARE",
-    payload: i,
+  return dispatch => {
+    setTimeout(() =>{
+      dispatch({
+        type: "CHANGE_SQUARE",
+        payload: i,
+      })
+    }, 1000);
   }
 }
 

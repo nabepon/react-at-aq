@@ -2,10 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducer from "./reducer";
+import thunk from "redux-thunk";
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk),
+);
 
 class Game extends React.Component {
   render() {

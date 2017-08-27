@@ -32,7 +32,7 @@ export class Board extends React.Component {
     if (winner) {
       status = 'Winner: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.props.data.xIsNext ? 'X' : 'O');
     }
     // const status = 'Next player: X';
 

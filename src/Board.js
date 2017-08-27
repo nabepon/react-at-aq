@@ -1,8 +1,9 @@
 import React from "react";
 import Square from "./Square";
 import calculateWinner from "./calculateWinner";
+import { connect } from 'react-redux';
 
-export default class Board extends React.Component {
+export class Board extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -34,6 +35,8 @@ export default class Board extends React.Component {
     }
     // const status = 'Next player: X';
 
+    console.log(this.props);
+
     return (
       <div>
         <div className="status">{status}</div>
@@ -56,3 +59,13 @@ export default class Board extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    data: state,
+  }
+};
+
+const connected = connect(mapStateToProps)(Board);
+
+export default connected;

@@ -2,6 +2,7 @@ import React from "react";
 import Square from "./Square";
 import calculateWinner from "./calculateWinner";
 import { connect } from 'react-redux';
+import { changeSquare } from "./reducer";
 
 export class Board extends React.Component {
   constructor() {
@@ -23,7 +24,7 @@ export class Board extends React.Component {
     });
   }
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
+    return <Square value={this.state.squares[i]} onClick={() => changeSquare(i)} />;
   }
   render() {
     const winner = calculateWinner(this.state.squares);

@@ -3,6 +3,7 @@ export function changeSquare(i) {
   console.log("changeSquare", i);
   return {
     type: "CHANGE_SQUARE",
+    payload: i,
   }
 }
 
@@ -12,7 +13,19 @@ const initialState = {
 };
 
 
-export default function reducer() {
-  console.log("reducer");
-  return initialState;
+export default function reducer(state, action) {
+  console.log("reducer", state);
+  if(!state){
+    return initialState;
+  }
+  if(action.type === "CHANGE_SQUARE"){
+    const squares = state.squares.slice();
+    squares[action.payload] = state.xIsNext ? 'X' : 'O';
+    return {
+      ...state,
+      squares: squares,
+      xIsNext: !state.xIsNext,
+    };
+  }
+  return state;
 }

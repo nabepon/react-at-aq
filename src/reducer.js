@@ -13,5 +13,6 @@ const initialState = {
 
 
 export default function reducer() {
+  console.log("reducer");
   return initialState;
 }

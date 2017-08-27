@@ -24,10 +24,10 @@ export class Board extends React.Component {
     });
   }
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => this.props.dispatch(changeSquare(i))} />;
+    return <Square value={this.props.data.squares[i]} onClick={() => this.props.dispatch(changeSquare(i))} />;
   }
   render() {
-    const winner = calculateWinner(this.state.squares);
+    const winner = calculateWinner(this.props.data.squares);
     let status;
     if (winner) {
       status = 'Winner: ' + winner;

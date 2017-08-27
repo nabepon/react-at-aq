@@ -1,3 +1,4 @@
+import calculateWinner from "./calculateWinner";
 
 export function changeSquare(i) {
   console.log("changeSquare", i);
@@ -12,7 +13,6 @@ const initialState = {
   xIsNext: true,
 };
 
-
 export default function reducer(state, action) {
   console.log("reducer", state);
   if(!state){
@@ -20,6 +20,9 @@ export default function reducer(state, action) {
   }
   if(action.type === "CHANGE_SQUARE"){
     const squares = state.squares.slice();
+    if (calculateWinner(squares) || squares[action.payload]) {
+      return state;
+    }
     squares[action.payload] = state.xIsNext ? 'X' : 'O';
     return {
       ...state,
